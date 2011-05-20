@@ -1,7 +1,7 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*- 
 
-import wx, os.path
+import wx, os
 
 class MyFrame(wx.Frame):
     """ メニューを作る """
@@ -10,6 +10,18 @@ class MyFrame(wx.Frame):
         wx.Frame.__init__(self, parent, title = title, size = (400, 300))
         self.control = wx.TextCtrl(self, style = wx.TE_MULTILINE)
 
+        # メニューバーを作成する
+
+        self.SetupMenu()
+
+        # ステータスバーを作成する
+        self.CreateStatusBar()
+
+        # 表示
+        self.Show(True)
+
+    def SetupMenu(self):
+        
         # 個々のメニューオブジェクトを作成する
         # ファイルメニュー、編集メニュー、書式メニュー、表示メニュー、ヘルプメニューの各オブジェクトを作成
 
@@ -62,12 +74,6 @@ class MyFrame(wx.Frame):
 
         # メニューバーを Frame にセットする
         self.SetMenuBar(menuBar)
-
-        # ステータスバーを作成する
-        self.CreateStatusBar()
-
-        # 表示
-        self.Show(True)
         
     # メニューが選択されたら、選択されたことを標準出力に表示する
     def OnNew(self, event):
